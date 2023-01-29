@@ -132,4 +132,7 @@ const Button = styled.button`
     &:active {
         opacity: 0.9;
     }
+    @media screen and (max-width: 767px) {
+        padding: 0.5rem 1.5rem;
+    }
 `;

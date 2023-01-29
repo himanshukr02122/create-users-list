@@ -27,6 +27,8 @@ const UserLists = styled.div`
     width: 40%;
     max-width: 32rem;
     min-width: 24rem;
+    max-height: 40vh;
+    overflow-x: hidden;
     margin-left: auto;
     margin-right: auto;
     background: #fff;
