@@ -20,7 +20,8 @@ const UserList = ({users, removeItem}) => {
   )
 }
 
-export default UserList;
+export default React.memo(UserList);
+
 const UserLists = styled.div`
     padding: 2rem;
     width: 40%;

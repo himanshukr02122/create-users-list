@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import styled from "styled-components";
 import AddUser from "./components/AddUser/AddUser";
 import Error from "./components/Error/Error";
@@ -17,13 +17,15 @@ function App() {
   const [danger, setDanger] = useState(false);
 
   const newUserDetailsHandler= (newUserDetails) => {
-    setUsersDetails((usersDetails)=> {
-      return [newUserDetails, ...usersDetails];
+    setUsersDetails((prevUsersDetails)=> {
+      return [newUserDetails, ...prevUsersDetails];
     })
   }
-  const newListItems = (id) => {
+  // const newListItems = (id) => {
+  // }
+  const newListItems = useCallback((id) => {
     setUsersDetails(usersDetails.filter((item)=> item.id !== id))
-  }
+  }, [usersDetails])
 
   const fetchingErrorMessage = obtainedMessage => {
     setObtainedErrorMessage(obtainedMessage);
