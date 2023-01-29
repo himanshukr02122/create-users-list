@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 
 const Error = ({errorMessage, validation}) => {
-
+    const [obtainedErrorMessage, setObtainedErrorMessage ]= useState(errorMessage);
+    useEffect(()=> {
+        setObtainedErrorMessage(errorMessage);
+    }, [errorMessage])
   return (
     <ErrorStyles>
         <header>Invalid input</header>
-        <div className='error-message'>{errorMessage}</div>
+        <div className='error-message'>{obtainedErrorMessage}</div>
         <div className='button-wrapper'>
             <button type='button' onClick={()=> validation(false)}>Okay</button>
         </div>
@@ -50,15 +53,15 @@ const ErrorStyles = styled.div`
             background: #fff;
             color: #000;
             font-size: 1.4rem;
-            font-weight: 500;
+            font-weight: 600;
             font-family: Verdana;
-            padding: 1rem 3rem;
+            padding: 2rem 3rem 1rem;
             min-height: 10rem;
             border-bottom-left-radius: 1rem;
             border-bottom-right-radius: 1rem;
             @media screen and (max-width: 575px) {
                 font-size: 1rem;
-                font-weight: 300;
+                font-weight: 500;
                 padding: 1rem 2rem;
                 min-height: 5rem;
             }

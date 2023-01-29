@@ -22,15 +22,12 @@ function App() {
     })
   }
   const newListItems = (id) => {
-    console.log(id);
     setUsersDetails(usersDetails.filter((item)=> item.id !== id))
   }
 
   const fetchingErrorMessage = obtainedMessage => {
-    console.log(obtainedMessage);
     setObtainedErrorMessage(obtainedMessage);
   }
-
   return (
     <Application>
       <AddUser getUserDetails={newUserDetailsHandler} giveMeErrorMessage={fetchingErrorMessage} validation={setDanger} />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 
-const AddUser = ({getUserDetails, validation}) => {
+const AddUser = ({getUserDetails, giveMeErrorMessage, validation}) => {
     const [username, setUserName] = useState('');
     const [validUsername, setValidUsername] = useState(true);
     const [valid, setValid] = useState(true);
@@ -13,18 +13,30 @@ const AddUser = ({getUserDetails, validation}) => {
             setValid(false);
             setValidUsername(false);
             validation(true);
+            giveMeErrorMessage('Please enter a valid username and age!');
             return
         }
         else if (username==='') {
             setValidUsername(false);
+            validation(true);
+            giveMeErrorMessage('Please enter a valid username!')
             return
         }
-        else if (age === 0) {
+        else if (age === '') {
             setValid(false);
+            validation(true);
+            giveMeErrorMessage('Please enter a valid age!')
+            return
+        }
+        else if (age > 61 || age < 18) {
+            setValid(false);
+            validation(true);
+            giveMeErrorMessage('Age must be greater than 18 and less than 60!')
             return
         }
         else {
             setValid(true);
+            validation(false);
             setValidUsername(true);
         }
         const newUser = {
@@ -43,7 +55,7 @@ const AddUser = ({getUserDetails, validation}) => {
     }
 
     const ageHandler = (e) => {
-        if( e.target.value < 61 ) {
+        if( e.target.value < 61) {
             setAge(e.target.value) 
             setValid(true)
         }
@@ -51,7 +63,6 @@ const AddUser = ({getUserDetails, validation}) => {
             setValid(false)
         }
     }
-
   return (
     <Form onSubmit={addNewUser}>
       <div>
