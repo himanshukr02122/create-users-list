@@ -35,7 +35,7 @@ function App() {
       {danger && 
       <div>
         <Error errorMessage={obtainedErrorMessage} validation={setDanger} />
-        <div className="backdrop"></div>
+        <div className="backdrop" onClick={()=> setDanger(false)}></div>
       </div>}
     </Application>
   );

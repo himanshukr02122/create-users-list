@@ -34,7 +34,8 @@ const ErrorStyles = styled.div`
     @media screen and (max-width: 575px) {
         min-width: 16rem;
     }
-    & header {
+    & header h2 {
+        margin-top: 0;
         background: #250f47;
         color: #fff;
         font-size: 2rem;
@@ -55,8 +56,8 @@ const ErrorStyles = styled.div`
             font-size: 1.4rem;
             font-weight: 600;
             font-family: Verdana;
-            padding: 2rem 3rem 1rem;
-            min-height: 10rem;
+            padding: 1rem 3rem;
+            min-height: 8rem;
             border-bottom-left-radius: 1rem;
             border-bottom-right-radius: 1rem;
             @media screen and (max-width: 575px) {
