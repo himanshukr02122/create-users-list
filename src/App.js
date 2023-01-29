@@ -8,9 +8,8 @@ function App() {
 
   const users = [
     {username: 'himanshu', age: 22, id: "user1"},
-    {username: 'santhosh', age: 21, id: "user2"},
-    {username: 'manjunath', age: 25, id: "user3"},
-    {username: 'ayush', age: 28, id: "user4"},
+    {username: 'piyush', age: 19, id: "user2"},
+    {username: 'manish', age: 23, id: "user3"},
   ]
   const [usersDetails, setUsersDetails] = useState(users);
   const [obtainedErrorMessage, setObtainedErrorMessage] = useState('');
