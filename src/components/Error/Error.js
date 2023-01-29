@@ -1,5 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+
+
+const ErrorModal = props => {
+    return (
+        <ErrorStyles>
+            <header><h2>Invalid input</h2></header>
+            <div className='error-message'>{props.obtainedErrorMessage}</div>
+            <div className='button-wrapper'>
+                <button type='button' onClick={()=> props.validation(false)}>Okay</button>
+            </div>
+        </ErrorStyles>
+    )
+}
 
 const Error = ({errorMessage, validation}) => {
     const [obtainedErrorMessage, setObtainedErrorMessage ]= useState(errorMessage);
@@ -7,13 +21,9 @@ const Error = ({errorMessage, validation}) => {
         setObtainedErrorMessage(errorMessage);
     }, [errorMessage])
   return (
-    <ErrorStyles>
-        <header><h2>Invalid input</h2></header>
-        <div className='error-message'>{obtainedErrorMessage}</div>
-        <div className='button-wrapper'>
-            <button type='button' onClick={()=> validation(false)}>Okay</button>
-        </div>
-    </ErrorStyles>
+    <>
+        {ReactDOM.createPortal(<ErrorModal obtainedErrorMessage={obtainedErrorMessage} validation={validation} />, document.getElementById('error-modal'))}
+    </>
   )
 }
 
