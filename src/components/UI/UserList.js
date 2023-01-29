@@ -4,16 +4,18 @@ import styled from 'styled-components';
 const UserList = ({users, removeItem}) => {
   return (
     <UserLists>
-        {
-            users.length > 0 ?
-            users.map((user) => {
-                return (
-                    <div className='userListItem' key={user.id} onClick={()=> removeItem(user.id)} >{user.username} ({user.age})</div>
-                )
-            })
-            : 
-            <p>No user found</p>
-        }
+        <ul>
+            {
+                users.length > 0 ?
+                users.map((user) => {
+                    return (
+                        <li className='userListItem' key={user.id} onClick={()=> removeItem(user.id)} >{user.username} ({user.age} years old)</li>
+                    )
+                })
+                : 
+                <li className='userListNoItem'>No user found</li>
+            }
+        </ul>
     </UserLists>
   )
 }
@@ -34,18 +36,23 @@ const UserLists = styled.div`
         min-width: 16rem;
         padding: 1rem
     }
-    & .userListItem {
-        border: 0.05rem solid gray;
-        margin-bottom: 1rem;
-        padding: 0.8rem 2rem;
-        font-size: 1.2rem;
-        font-weight: 600;
-    }
-    & p {
-        font-size: 1.5rem;
-        font-weight: 700;
-        text-align: center;
-        font-family: Verdana;
+    & ul {
+            list-style-type: none;
+            padding-left: 0;
+            & .userListItem {
+            border: 0.05rem solid gray;
+            margin-bottom: 1rem;
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
 
+        & .userListNoItem {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            font-family: Verdana;
+
+        }
     }
 `;

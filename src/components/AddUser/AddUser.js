@@ -28,7 +28,7 @@ const AddUser = ({getUserDetails, giveMeErrorMessage, validation}) => {
             giveMeErrorMessage('Please enter a valid age!')
             return
         }
-        else if (age > 61 || age < 18) {
+        else if (+age > 61 || +age < 18) {
             setValid(false);
             validation(true);
             giveMeErrorMessage('Age must be greater than 18 and less than 60!')

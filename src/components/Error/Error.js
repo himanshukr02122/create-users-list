@@ -8,7 +8,7 @@ const Error = ({errorMessage, validation}) => {
     }, [errorMessage])
   return (
     <ErrorStyles>
-        <header>Invalid input</header>
+        <header><h2>Invalid input</h2></header>
         <div className='error-message'>{obtainedErrorMessage}</div>
         <div className='button-wrapper'>
             <button type='button' onClick={()=> validation(false)}>Okay</button>
